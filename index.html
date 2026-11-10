@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Romeo & Juliet</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #8a7b6e;
+            --bg-light: #fcfbfa;
+            --text-dark: #333333;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        .font-serif {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Hero / Cover Section */
+        .hero {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            z-index: 1050;
+            transition: transform 1s ease-in-out;
+        }
+
+        .hero.unlocked {
+            transform: translateY(-100vh);
+        }
+
+        /* Main Content wrapper */
+        .main-content {
+            display: none;
+            margin-top: 0;
+        }
+
+        /* Sections Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Bride & Groom */
+        .couple-img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Countdown Card */
+        .countdown-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            min-width: 80px;
+            margin: 5px;
+        }
+
+        .countdown-box span {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+            color: var(--primary);
+        }
+
+        /* Floating Audio Button */
+        .audio-icon-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Gallery */
+        .gallery-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Audio Control -->
+    <button id="audio-btn" class="audio-icon-button" style="display: none;">
+        <i class="fa-solid fa-disc fa-spin"></i>
+    </button>
+    <!-- Ganti URL src ini dengan file audio/mp3 pilihan Anda -->
+    <audio id="bgm" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <!-- COVER SCREEN SECTION -->
+    <div id="hero-cover" class="hero">
+        <div>
+            <h5 class="text-uppercase tracking-widest mb-3">Undangan Pernikahan</h5>
+            <h1 class="font-serif display-1 mb-4">Romeo & Juliet</h1>
+            <p class="lead mb-4">Kepada Bapak/Ibu/Saudara/i:</p>
+            <h3 id="guest-name" class="fw-bold mb-5">- Nama Tamu -</h3>
+            <button class="btn btn-light btn-lg px-4 shadow text-dark" onclick="openInvitation()">
+                <i class="fa-solid fa-envelope-open me-2"></i> Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN WEBSITE CONTENT -->
+    <div id="main-content" class="main-content">
+        
+        <!-- HOME / HERO BANNER -->
+        <header class="text-center bg-white py-5 shadow-sm">
+            <h1 class="font-serif display-2 mt-4">Romeo & Juliet</h1>
+            <p class="text-muted text-uppercase tracking-wide">Kami mengundang Anda untuk merayakan pernikahan kami</p>
+        </header>
+
+        <!-- MEMPELAI SECTION -->
+        <section class="text-center container">
+            <h2 class="font-serif section-title">Mempelai</h2>
+            <p class="text-muted mb-5">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan.</p>
+            
+            <div class="row align-items-center justify-content-center">
+                <!-- Mempelai Pria -->
+                <div class="col-md-5 mb-4">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=400" alt="Romeo" class="couple-img">
+                    <h3 class="fw-bold">Romeo Montague, S.T.</h3>
+                    <p class="text-muted">Putra dari Bapak Montague & Ibu Montague</p>
+                </div>
+                
+                <div class="col-md-2 mb-4">
+                    <h1 class="font-serif display-4">&amp;</h1>
+                </div>
+
+                <!-- Mempelai Wanita -->
+                <div class="col-md-5 mb-4">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400" alt="Juliet" class="couple-img">
+                    <h3 class="fw-bold">Juliet Capulet, S.E.</h3>
+                    <p class="text-muted">Putri dari Bapak Capulet & Ibu Capulet</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACARA SECTION & COUNTDOWN -->
+        <section class="bg-white">
+            <div class="container text-center">
+                <h2 class="font-serif section-title">Informasi Acara</h2>
+                <p class="mb-5 text-muted">Acara akan diselenggarakan pada:</p>
+
+                <!-- Countdown Timer -->
+                <div class="d-flex justify-content-center mb-5">
+                    <div class="countdown-box">
+                        <span id="days">00</span>Hari
+                    </div>
+                    <div class="countdown-box">
+                        <span id="hours">00</span>Jam
+                    </div>
+                    <div class="countdown-box">
+                        <span id="minutes">00</span>Menit
+                    </div>
+                    <div class="countdown-box">
+                        <span id="seconds">00</span>Detik
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <!-- Akad Nikah -->
+                    <div class="col-md-5 card m-3 p-4 border-0 shadow-sm">
+                        <i class="fa-solid fa-heart fa-2x mb-3 text-secondary"></i>
+                        <h4 class="fw-bold">Akad Nikah</h4>
+                        <p class="mb-1 text-muted"><i class="fa-regular fa-calendar-check me-2"></i>Minggu, 12 Desember 2027</p>
+                        <p class="mb-3 text-muted"><i class="fa-regular fa-clock me-2"></i>08.00 - 10.00 WIB</p>
+                        <p class="fw-semibold">Masjid Agung Syahadat</p>
+                        <p class="small text-muted">Jl. Pahlawan No. 45, Kota Cinta</p>
+                    </div>
+
+                    <!-- Resepsi -->
+                    <div class="col-md-5 card m-3 p-4 border-0 shadow-sm">
+                        <i class="fa-solid fa-champagne-glasses fa-2x mb-3 text-secondary"></i>
+                        <h4 class="fw-bold">Resepsi Pernikahan</h4>
+                        <p class="mb-1 text-muted"><i class="fa-regular fa-calendar-check me-2"></i>Minggu, 12 Desember 2027</p>
+                        <p class="mb-3 text-muted"><i class="fa-regular fa-clock me-2"></i>11.00 - selesai</p>
+                        <p class="fw-semibold">Gedung Harmoni Ballroom</p>
+                        <p class="small text-muted">Jl. Kemakmuran No. 12, Kota Cinta</p>
+                    </div>
+                </div>
+
+                <!-- Google Maps Button -->
+                <div class="mt-4">
+                    <a href="https://maps.google.com" target="_blank" class="btn btn-outline-dark px-4">
+                        <i class="fa-solid fa-map-location-dot me-2"></i> Buka Google Maps Lokasi
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERI FOTO -->
+        <section class="container text-center">
+            <h2 class="font-serif section-title">Galeri Kebahagiaan</h2>
+            <p class="text-muted mb-5">Momen-momen indah perjalanan cinta kami.</p>
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600" class="gallery-img" alt="Gallery 1">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600" class="gallery-img" alt="Gallery 2">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=600" class="gallery-img" alt="Gallery 3">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=600" class="gallery-img" alt="Gallery 4">
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white">
+            <div class="container" style="max-width: 700px;">
+                <div class="text-center">
+                    <h2 class="font-serif section-title">Konfirmasi Kehadiran</h2>
+                    <p class="text-muted mb-5">Harap konfirmasi kehadiran Anda demi kelancaran acara.</p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-10 shadow p-4 rounded bg-white">
+                        <form id="rsvp-form" onsubmit="handleRSVP(event)">
+                            <div class="mb-3">
+                                <label for="form-name" class="form-label fw-bold">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="form-name" required placeholder="Masukkan nama Anda">
+                            </div>
+                            <div class="mb-3">
+                                <label for="attendance" class="form-label fw-bold">Konfirmasi Kehadiran</label>
+                                <select class="form-select" id="attendance" required>
+                                    <option value="" disabled selected>-- Pilih Konfirmasi --</option>
+                                    <option value="Hadir">Ya, Saya Akan Hadir</option>
+                                    <option value="Tidak Hadir">Maaf, Saya Tidak Bisa Hadir</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label fw-bold">Pesan / Ucapan Singkat</label>
+                                <textarea class="form-control" id="message" rows="3" placeholder="Tulis ucapan selamat Anda di sini..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark w-100">Kirim Konfirmasi</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-dark text-white text-center py-4">
+            <p class="font-serif display-6 mb-1">Romeo &amp; Juliet</p>
+            <p class="small text-muted mb-0">&copy; 2027 E-Wedding Invitation. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // 1. Ambil Nama Tamu dari parameter URL secara otomatis (?n=NamaTamu)
+        const urlParams = new URLSearchParams(window.location.search);
+        const guestName = urlParams.get('n') || "Tamu Undangan";
+        document.getElementById('guest-name').innerText = guestName;
+        document.getElementById('form-name').value = guestName !== "Tamu Undangan" ? guestName : "";
+
+        // 2. Fungsi Tombol Buka Undangan
+        function openInvitation() {
+            // Sembunyikan Cover dengan transisi geser atas
+            const cover = document.getElementById('hero-cover');
+            cover.classList.add('unlocked');
+            
+            // Munculkan konten utama
+            const mainContent = document.getElementById('main-content');
+            mainContent.style.display = 'block';
+            
+            // Putar audio musik latar
+            const audio = document.getElementById('bgm');
+            const audioBtn = document.getElementById('audio-btn');
+            audioBtn.style.display = 'flex';
+            audio.play().catch(error => console.log("Autoplay dicegah oleh browser"));
+
+            // Hapus elemen cover dari dokumen setelah animasi selesai agar tidak memakan memori/ruang
+            setTimeout(() => {
+                cover.style.display = 'none';
+            }, 1000);
+        }
+
+        // 3. Kontrol Musik (Play/Pause)
+        const audio = document.getElementById('bgm');
+        const audioBtn = document.getElementById('audio-btn');
+        let isPlaying = true;
+
+        audioBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                audio.pause();
+                audioBtn.innerHTML = '<i class="fa-solid fa-disc"></i>'; // Stop putaran icon
+            } else {
+                audio.play();
+                audioBtn.innerHTML = '<i class="fa-solid fa-disc fa-spin"></i>'; // Putar icon kembali
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // 4. Hitung Mundur Waktu Pernikahan (Countdown)
+        // Silakan sesuaikan target tanggal pernikahan di bawah ini (Format: MMM DD, YYYY HH:MM:SS)
+        const weddingDate = new Date("Dec 12, 2027 08:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+            }
+        }, 1000);
+
+        // 5. Handling Submit Form RSVP
+        function handleRSVP(event) {
+            event.preventDefault();
+            const name = document.getElementById('form-name').value;
+            const status = document.getElementById('attendance').value;
+            const msg = document.getElementById('message').value;
+
+            // Template notifikasi sementara (Bisa dikembangkan ke API eksternal)
+            alert(`Terima kasih ${name}!
+Konfirmasi Anda (${status}) telah kami terima.
+Pesan: "${msg}"`);
+            document.getElementById('rsvp-form').reset();
+        }
+    </script>
+</body>
+</html>
