@@ -1,3 +1,105 @@
+//'sikp_request',
+//'sikp_response',
+//'sikp_rcode',
+//'sikp_status',
+//'sikp_response_stamp',
+//'bsgw_request',
+//'bsgw_response',
+//'bsgw_response_stamp',
+//'tx_timestamp',
+//'last_outstanding',
+//'last_tgl_transaksi',
+//'created',
+//'modified',
+//'biaya',
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//    $data = [
+//        'nomor_rekening' => '01205090005291',
+//        'tgl_transaksi' => '2026-09-22',
+//        'tgl_pelaporan' => '2026-09-24',
+//        'limit' => '25000000',
+//        'outstanding' => 25000000,
+//        'angsuran_pokok' => 0,
+//        'kolektibilitas' => 1,
+//        'dbcr' => 0,
+//        'sikp_status' => 1,
+//        'bsgw_request' => [
+//            "function" => "Ministatment",
+//            "AccNo" => "01205090005291",
+//            "StartDate" => "2026-08-22",
+//            "EndDate" => "2026-09-23"
+//        ],
+//        'bsgw_response' => [
+//            "error" => false,
+//            "status" => 200,
+//            "result" => [
+//                [
+//                    "TXAMTPEN" => 0,
+//                    "SPVID" => "inst1",
+//                    "CHQBKNBR" => "",
+//                    "CHANNELID" => 0,
+//                    "PAGENBR" => 0,
+//                    "TXDTSTLMN" => "2026-09-22 23:47:23.976246",
+//                    "GTW_DATE" => "",
+//                    "TXMSG" => "PENCAIRAN EFEKTIF 01205090005291 ",
+//                    "USERID" => "dco01   ",
+//                    "TXTOTAL" => 25000000,
+//                    "TXREVSTS" => 0,
+//                    "ACCNBR" => "01205090005291",
+//                    "TXAMT" => "25000000.00",
+//                    "TXBRANCH" => "012",
+//                    "APPLID" => "05",
+//                    "TXRATE" => "1.00",
+//                    "DBCR" => 0,
+//                    "BANK_CONTRA" => "",
+//                    "REFFACC" => "",
+//                    "TXID" => "u116800002",
+//                    "TXDATE" => "2026-09-22",
+//                    "TXAMTINT" => 0,
+//                    "TXCCY" => "IDR",
+//                    "TXCODE" => "199",
+//                    "ACC_CONTRA" => ""
+//                ]
+//            ],
+//            "statusId" => 1,
+//            "saldoAkhir" => "25000000.00",
+//            "rCode" => "00",
+//            "saldoAwal" => "0.00",
+//            "message" => "INQUIRY MUTASI TRANSAKSI BERHASIL",
+//            "timestamp" => "2026-09-24 10:42:11.909"
+//        ],
+//        'bsgw_response_stamp' => '2026-09-24 10: 42: 11'
+//    ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -17,50 +119,50 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
         :root {
-            --dark-champagne: #C2B280;
+    --dark-champagne: #C2B280;
             --deep-champagne: #1A1610;
             --soft-champagne: #E6DCC4;
             --gold-accent: #D4AF37;
         }
         body {
-            font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
             background-color: var(--deep-champagne);
             color: var(--soft-champagne);
             overflow-x: hidden;
         }
         .font-premium-serif {
-            font-family: 'Cinzel', serif;
+    font-family: 'Cinzel', serif;
         }
         .font-premium-accent {
-            font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', serif;
             font-style: italic;
         }
         /* Shadowing Transition Effect Between Sections */
         section {
-            position: relative;
-            box-shadow: inset 0 30px 50px -20px rgba(0,0,0,0.9), inset 0 -30px 50px -20px rgba(0,0,0,0.9);
+    position: relative;
+    box-shadow: inset 0 30px 50px -20px rgba(0,0,0,0.9), inset 0 -30px 50px -20px rgba(0,0,0,0.9);
             border-bottom: 1px solid rgba(194, 178, 128, 0.15);
         }
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+    width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--deep-champagne);
-        }
+    background: var(--deep-champagne);
+}
         ::-webkit-scrollbar-thumb {
-            background: var(--dark-champagne);
-            border-radius: 4px;
+    background: var(--dark-champagne);
+    border-radius: 4px;
         }
         /* Audio Player Control Animation */
         .music-rotate {
-            animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
         }
         @keyframes spin {
-            100% { transform: rotate(360deg); }
+    100% { transform: rotate(360deg); }
         }
         .bg-overlay {
-            background: linear-gradient(to bottom, rgba(26, 22, 16, 0.4), rgba(26, 22, 16, 0.85));
+    background: linear-gradient(to bottom, rgba(26, 22, 16, 0.4), rgba(26, 22, 16, 0.85));
         }
     </style>
 </head>
@@ -72,7 +174,7 @@
             <i id="musicIcon" class="fas fa-music"></i>
         </button>
     </div>
-    
+
     <!-- Background Audio (Free Wedding Instrumental Theme) -->
     <audio id="weddingMusic" loop>
         <source src="RAYE – Where Is My Husband!.mp3" type="audio/mp3">
@@ -85,7 +187,7 @@
             <p class="font-premium-serif uppercase tracking-widest text-[#C2B280] text-sm md:text-base mb-4">The Wedding Invitation</p>
             <h1 class="font-premium-serif text-4xl md:text-7xl font-bold text-[#E6DCC4] mb-4 tracking-wide">Rudi & Ivana</h1>
             <p class="font-premium-accent text-2xl md:text-3xl text-[#C2B280] mb-8">We are getting married</p>
-            
+
             <!-- Dual Unified Countdown Widget -->
             <div class="grid grid-cols-2 md:grid-cols-2 gap-4 mb-8 max-w-xl mx-auto">
                 <div class="bg-[#1A1610]/80 p-3 rounded-lg border border-[#C2B280]/30 shadow-xl">
@@ -107,31 +209,33 @@
     <!-- SECTION 2: Groom & Bride Profile -->
     <section id="main-content" class="py-24 bg-[#1A1610] px-4">
         <div class="max-w-5xl mx-auto text-center">
-            <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="fade-up">Mempelai Kudus</span>
-            <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4] mb-12" data-aos="fade-up" data-aos-delay="200">Menghitung Kebahagiaan</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <!-- Groom -->
-                <div class="flex flex-col items-center" data-aos="fade-right" data-aos-duration="1200">
-                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-[#C2B280] shadow-2xl mb-6 transform hover:scale-105 transition-transform duration-500">
-                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=500&auto=format&fit=crop" alt="Groom" class="w-full h-full object-cover">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="fade-up">Mempelai Kudus</span>
+                <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4] mb-12" data-aos="fade-up" data-aos-delay="200">Menghitung Kebahagiaan</h2>
+    
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <!-- Groom -->
+                    <div class="flex flex-col items-center" data-aos="fade-right" data-aos-duration="1200">
+                        <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-[#C2B280] shadow-2xl mb-6 transform hover:scale-105 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=500&auto=format&fit=crop" alt="Groom" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-premium-serif text-2xl font-bold text-[#E6DCC4]">Rudi, S.T.</h3>
+                        <p class="text-sm text-[#C2B280] mt-2 tracking-wide">Putra pertama dari Bapak Wijaya & Ibu Ratna</p>
+                        <div class="flex gap-3 mt-4 text-[#C2B280]/70">
+                            <a href="#" class="hover:text-[#C2B280]"><i class="fab fa-instagram text-xl"></i></a>
+                        </div>
                     </div>
-                    <h3 class="font-premium-serif text-2xl font-bold text-[#E6DCC4]">Rudi, S.T.</h3>
-                    <p class="text-sm text-[#C2B280] mt-2 tracking-wide">Putra pertama dari Bapak Wijaya & Ibu Ratna</p>
-                    <div class="flex gap-3 mt-4 text-[#C2B280]/70">
-                        <a href="#" class="hover:text-[#C2B280]"><i class="fab fa-instagram text-xl"></i></a>
-                    </div>
-                </div>
 
-                <!-- Bride -->
-                <div class="flex flex-col items-center" data-aos="fade-left" data-aos-duration="1200">
-                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-[#C2B280] shadow-2xl mb-6 transform hover:scale-105 transition-transform duration-500">
-                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=500&auto=format&fit=crop" alt="Bride" class="w-full h-full object-cover">
-                    </div>
-                    <h3 class="font-premium-serif text-2xl font-bold text-[#E6DCC4]">Ivana, S.E.</h3>
-                    <p class="text-sm text-[#C2B280] mt-2 tracking-wide">Putri bungsu dari Bapak Christie & Ibu Maria</p>
-                    <div class="flex gap-3 mt-4 text-[#C2B280]/70">
-                        <a href="#" class="hover:text-[#C2B280]"><i class="fab fa-instagram text-xl"></i></a>
+                    <!-- Bride -->
+                    <div class="flex flex-col items-center" data-aos="fade-left" data-aos-duration="1200">
+                        <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-[#C2B280] shadow-2xl mb-6 transform hover:scale-105 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=500&auto=format&fit=crop" alt="Bride" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="font-premium-serif text-2xl font-bold text-[#E6DCC4]">Ivana, S.E.</h3>
+                        <p class="text-sm text-[#C2B280] mt-2 tracking-wide">Putri bungsu dari Bapak Christie & Ibu Maria</p>
+                        <div class="flex gap-3 mt-4 text-[#C2B280]/70">
+                            <a href="#" class="hover:text-[#C2B280]"><i class="fab fa-instagram text-xl"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -141,42 +245,44 @@
     <!-- SECTION 3: Event Details & Location Maps -->
     <section class="py-24 bg-[#231E16] px-4">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="zoom-in">Waktu & Tempat</span>
-                <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4]" data-aos="zoom-in" data-aos-delay="200">Detail Rangkaian Acara</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Pemberkatan Card -->
-                <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl flex flex-col justify-between" data-aos="fade-up-right" data-aos-duration="1200">
-                    <div>
-                        <div class="text-[#C2B280] text-3xl mb-4"><i class="fas fa-church"></i></div>
-                        <h3 class="font-premium-serif text-2xl font-semibold text-[#E6DCC4] mb-4">Pemberkatan Pernikahan</h3>
-                        <p class="text-sm text-[#C2B280]/90 mb-2"><i class="far fa-calendar-alt mr-2 text-[#C2B280]"></i> Sabtu, 28 November 2026</p>
-                        <p class="text-sm text-[#C2B280]/90 mb-4"><i class="far fa-clock mr-2 text-[#C2B280]"></i> 09:00 WITA - Selesai</p>
-                        <p class="text-sm font-semibold text-[#E6DCC4] mb-2">Gereja Katedral Manado</p>
-                        <p class="text-xs text-[#C2B280]/70 mb-6">Jl. Sam Ratulangi No.23, Wenang, Kota Manado, Sulawesi Utara</p>
-                    </div>
-                    <!-- Embed Google Maps Pemberkatan -->
-                    <div class="w-full h-64 rounded-lg overflow-hidden border border-[#C2B280]/30 shadow-inner">
-    <iframe src="https://google.com" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
-</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="text-center mb-16">
+                    <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="zoom-in">Waktu & Tempat</span>
+                    <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4]" data-aos="zoom-in" data-aos-delay="200">Detail Rangkaian Acara</h2>
                 </div>
 
-                <!-- Resepsi Card -->
-                <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl flex flex-col justify-between" data-aos="fade-up-left" data-aos-duration="1200">
-                    <div>
-                        <div class="text-[#C2B280] text-3xl mb-4"><i class="fas fa-glass-cheers"></i></div>
-                        <h3 class="font-premium-serif text-2xl font-semibold text-[#E6DCC4] mb-4">Resepsi Pernikahan</h3>
-                        <p class="text-sm text-[#C2B280]/90 mb-2"><i class="far fa-calendar-alt mr-2 text-[#C2B280]"></i> Sabtu, 28 November 2026</p>
-                        <p class="text-sm text-[#C2B280]/90 mb-4"><i class="far fa-clock mr-2 text-[#C2B280]"></i> 18:30 WITA - Selesai</p>
-                        <p class="text-sm font-semibold text-[#E6DCC4] mb-2">Grand Ballroom The Grand Palace</p>
-                        <p class="text-xs text-[#C2B280]/70 mb-6">Jl. Wolter Monginsidi, Malalayang, Kota Manado, Sulawesi Utara</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Pemberkatan Card -->
+                    <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl flex flex-col justify-between" data-aos="fade-up-right" data-aos-duration="1200">
+                        <div>
+                            <div class="text-[#C2B280] text-3xl mb-4"><i class="fas fa-church"></i></div>
+                            <h3 class="font-premium-serif text-2xl font-semibold text-[#E6DCC4] mb-4">Pemberkatan Pernikahan</h3>
+                            <p class="text-sm text-[#C2B280]/90 mb-2"><i class="far fa-calendar-alt mr-2 text-[#C2B280]"></i> Sabtu, 28 November 2026</p>
+                            <p class="text-sm text-[#C2B280]/90 mb-4"><i class="far fa-clock mr-2 text-[#C2B280]"></i> 09:00 WITA - Selesai</p>
+                            <p class="text-sm font-semibold text-[#E6DCC4] mb-2">Gereja Katedral Manado</p>
+                            <p class="text-xs text-[#C2B280]/70 mb-6">Jl. Sam Ratulangi No.23, Wenang, Kota Manado, Sulawesi Utara</p>
+                        </div>
+                        <!-- Embed Google Maps Pemberkatan -->
+                        <div class="w-full h-64 rounded-lg overflow-hidden border border-[#C2B280]/30 shadow-inner">
+        <iframe src="https://google.com" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+    </div>
                     </div>
-                    <!-- Embed Google Maps Resepsi -->
-                    <div class="w-full h-64 rounded-lg overflow-hidden border border-[#C2B280]/30 shadow-inner">
-    <iframe src="https://google.com" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
-</div>
+
+                    <!-- Resepsi Card -->
+                    <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl flex flex-col justify-between" data-aos="fade-up-left" data-aos-duration="1200">
+                        <div>
+                            <div class="text-[#C2B280] text-3xl mb-4"><i class="fas fa-glass-cheers"></i></div>
+                            <h3 class="font-premium-serif text-2xl font-semibold text-[#E6DCC4] mb-4">Resepsi Pernikahan</h3>
+                            <p class="text-sm text-[#C2B280]/90 mb-2"><i class="far fa-calendar-alt mr-2 text-[#C2B280]"></i> Sabtu, 28 November 2026</p>
+                            <p class="text-sm text-[#C2B280]/90 mb-4"><i class="far fa-clock mr-2 text-[#C2B280]"></i> 18:30 WITA - Selesai</p>
+                            <p class="text-sm font-semibold text-[#E6DCC4] mb-2">Grand Ballroom The Grand Palace</p>
+                            <p class="text-xs text-[#C2B280]/70 mb-6">Jl. Wolter Monginsidi, Malalayang, Kota Manado, Sulawesi Utara</p>
+                        </div>
+                        <!-- Embed Google Maps Resepsi -->
+                        <div class="w-full h-64 rounded-lg overflow-hidden border border-[#C2B280]/30 shadow-inner">
+        <iframe src="https://google.com" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -185,30 +291,32 @@
     <!-- SECTION 4: Pre Wedding Photo Gallery -->
     <section class="py-24 bg-[#1A1610] px-4">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="fade-down">Galeri Indah</span>
-                <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4]" data-aos="fade-down" data-aos-delay="200">Momen Pre-Wedding</h2>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="text-center mb-16">
+                    <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="fade-down">Galeri Indah</span>
+                    <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4]" data-aos="fade-down" data-aos-delay="200">Momen Pre-Wedding</h2>
+                </div>
 
-            <!-- Responsive Grid Gallery -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000">
-                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 1">
-                </div>
-                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1519225495810-7512c696505a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 2">
-                </div>
-                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 3">
-                </div>
-                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 4">
-                </div>
-                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
-                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 5">
-                </div>
-                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">
-                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 6">
+                <!-- Responsive Grid Gallery -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000">
+                        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 1">
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1519225495810-7512c696505a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 2">
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 3">
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                        <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 4">
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 5">
+                    </div>
+                    <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 6">
+                    </div>
                 </div>
             </div>
         </div>
@@ -217,46 +325,48 @@
     <!-- SECTION 5: Wedding Gift & Wishlist -->
     <section class="py-24 bg-[#231E16] px-4">
         <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="fade-up">Tanda Kasih</span>
-                <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4]" data-aos="fade-up" data-aos-delay="100">Kado Digital & Wish List</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Digital Gift / Bank Account -->
-                <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl" data-aos="flip-left" data-aos-duration="1200">
-                    <h3 class="font-premium-serif text-xl font-semibold text-[#E6DCC4] mb-6 text-center border-b border-[#C2B280]/20 pb-3">Transfer Bank</h3>
-                    
-                    <div class="bg-[#231E16] p-4 rounded-lg border border-[#C2B280]/10 mb-4 flex items-center justify-between">
-                        <div>
-                            <p class="text-xs uppercase text-[#C2B280] tracking-wider font-semibold">Bank Central Asia (BCA)</p>
-                            <p id="norek-bca" class="font-mono text-lg font-bold text-white tracking-widest my-1">8290456123</p>
-                            <p class="text-xs text-[#C2B280]/70">a.n. Arthur Wijaya</p>
-                        </div>
-                        <button onclick="copyToClipboard('norek-bca')" class="px-3 py-2 bg-[#C2B280]/20 hover:bg-[#C2B280] text-[#C2B280] hover:text-[#1A1610] text-xs font-semibold rounded transition-colors duration-300">
-                            <i class="far fa-copy mr-1"></i> Copy
-                        </button>
-                    </div>
-
-                    <div class="bg-[#231E16] p-4 rounded-lg border border-[#C2B280]/10 flex items-center justify-between">
-                        <div>
-                            <p class="text-xs uppercase text-[#C2B280] tracking-wider font-semibold">Bank Mandiri</p>
-                            <p id="norek-mandiri" class="font-mono text-lg font-bold text-white tracking-widest my-1">157000987654</p>
-                            <p class="text-xs text-[#C2B280]/70">a.n. Eleanor Christie</p>
-                        </div>
-                        <button onclick="copyToClipboard('norek-mandiri')" class="px-3 py-2 bg-[#C2B280]/20 hover:bg-[#C2B280] text-[#C2B280] hover:text-[#1A1610] text-xs font-semibold rounded transition-colors duration-300">
-                            <i class="far fa-copy mr-1"></i> Copy
-                        </button>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="text-center mb-16">
+                    <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="fade-up">Tanda Kasih</span>
+                    <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4]" data-aos="fade-up" data-aos-delay="100">Kado Digital & Wish List</h2>
                 </div>
 
-                <!-- Dynamic Wish List -->
-                <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl" data-aos="flip-right" data-aos-duration="1200">
-                    <h3 class="font-premium-serif text-xl font-semibold text-[#E6DCC4] mb-6 text-center border-b border-[#C2B280]/20 pb-3">Wedding Wish List</h3>
-                    <p class="text-xs text-[#C2B280]/70 text-center mb-4">Membantu mewujudkan rumah tangga impian kami</p>
-                    
-                    <div id="wishlist-container" class="space-y-3 max-h-64 overflow-y-auto pr-1">
-                        <!-- Dynamic content from internal JSON -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Digital Gift / Bank Account -->
+                    <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl" data-aos="flip-left" data-aos-duration="1200">
+                        <h3 class="font-premium-serif text-xl font-semibold text-[#E6DCC4] mb-6 text-center border-b border-[#C2B280]/20 pb-3">Transfer Bank</h3>
+
+                        <div class="bg-[#231E16] p-4 rounded-lg border border-[#C2B280]/10 mb-4 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs uppercase text-[#C2B280] tracking-wider font-semibold">Bank Central Asia (BCA)</p>
+                                <p id="norek-bca" class="font-mono text-lg font-bold text-white tracking-widest my-1">8290456123</p>
+                                <p class="text-xs text-[#C2B280]/70">a.n. Arthur Wijaya</p>
+                            </div>
+                            <button onclick="copyToClipboard('norek-bca')" class="px-3 py-2 bg-[#C2B280]/20 hover:bg-[#C2B280] text-[#C2B280] hover:text-[#1A1610] text-xs font-semibold rounded transition-colors duration-300">
+                                <i class="far fa-copy mr-1"></i> Copy
+                            </button>
+                        </div>
+
+                        <div class="bg-[#231E16] p-4 rounded-lg border border-[#C2B280]/10 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs uppercase text-[#C2B280] tracking-wider font-semibold">Bank Mandiri</p>
+                                <p id="norek-mandiri" class="font-mono text-lg font-bold text-white tracking-widest my-1">157000987654</p>
+                                <p class="text-xs text-[#C2B280]/70">a.n. Eleanor Christie</p>
+                            </div>
+                            <button onclick="copyToClipboard('norek-mandiri')" class="px-3 py-2 bg-[#C2B280]/20 hover:bg-[#C2B280] text-[#C2B280] hover:text-[#1A1610] text-xs font-semibold rounded transition-colors duration-300">
+                                <i class="far fa-copy mr-1"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Wish List -->
+                    <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl" data-aos="flip-right" data-aos-duration="1200">
+                        <h3 class="font-premium-serif text-xl font-semibold text-[#E6DCC4] mb-6 text-center border-b border-[#C2B280]/20 pb-3">Wedding Wish List</h3>
+                        <p class="text-xs text-[#C2B280]/70 text-center mb-4">Membantu mewujudkan rumah tangga impian kami</p>
+
+                        <div id="wishlist-container" class="space-y-3 max-h-64 overflow-y-auto pr-1">
+                            <!-- Dynamic content from internal JSON -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -267,12 +377,12 @@
     <section class="py-24 bg-[#1A1610] px-4">
         <div class="max-w-4xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                
+
                 <!-- RSVP / Reservation Book Form -->
                 <div data-aos="fade-right" data-aos-duration="1200">
                     <span class="font-premium-accent text-2xl text-[#C2B280] block mb-2">Konfirmasi Kehadiran</span>
                     <h2 class="font-premium-serif text-2xl font-bold uppercase tracking-wider text-[#E6DCC4] mb-6">Reservation Book</h2>
-                    
+
                     <form id="rsvpForm" class="space-y-4">
                         <div>
                             <label class="block text-xs uppercase tracking-wider text-[#C2B280] mb-2 font-medium">Nama Lengkap</label>
@@ -294,12 +404,12 @@
                                 </label>
                                 <label class="flex items-center text-sm text-[#E6DCC4]">
                                     <input type="radio" name="rsvpStatus" value="Tidak Hadir" class="mr-2 accent-[#C2B280]"> Tidak Hadir
-                                </label>
+</label>
                             </div>
                         </div>
                         <button type="submit" class="w-full py-3 bg-[#C2B280] text-[#1A1610] font-premium-serif uppercase tracking-widest font-semibold text-sm rounded shadow hover:bg-[#E6DCC4] transition-all transform active:scale-95">
-                            Kirim Reservasi
-                        </button>
+Kirim Reservasi
+</button>
                     </form>
                 </div>
 
@@ -307,7 +417,7 @@
                 <div data-aos="fade-left" data-aos-duration="1200">
                     <span class="font-premium-accent text-2xl text-[#C2B280] block mb-2">Doa Restu Tamu</span>
                     <h2 class="font-premium-serif text-2xl font-bold uppercase tracking-wider text-[#E6DCC4] mb-6">Guest Book Comments</h2>
-                    
+
                     <form id="commentForm" class="space-y-4 mb-6">
                         <div class="grid grid-cols-2 gap-2">
                             <input type="text" id="commentName" placeholder="Nama Anda" required class="bg-[#231E16] border border-[#C2B280]/30 rounded p-3 text-xs text-white focus:outline-none focus:border-[#C2B280]">
@@ -319,8 +429,8 @@
                         </div>
                         <textarea id="commentText" placeholder="Tulis ucapan selamat & doa restu Anda di sini..." rows="3" required class="w-full bg-[#231E16] border border-[#C2B280]/30 rounded p-3 text-xs text-white focus:outline-none focus:border-[#C2B280]"></textarea>
                         <button type="submit" class="w-full py-2 bg-[#C2B280]/20 border border-[#C2B280] text-[#C2B280] font-premium-serif uppercase tracking-wider text-xs font-semibold rounded hover:bg-[#C2B280] hover:text-[#1A1610] transition-all">
-                            Kirim Ucapan
-                        </button>
+Kirim Ucapan
+</button>
                     </form>
 
                     <!-- Scrollable Live JSON Comment Stream -->
@@ -341,8 +451,8 @@
 
     <!-- INTERACTIVE SCRIPT & LOCAL JSON ENGINE -->
     <script>
-        // Init AOS Animations
-        AOS.init({
+// Init AOS Animations
+AOS.init({
             once: false,
             mirror: true
         });
@@ -394,16 +504,16 @@
         }
 
         musicToggle.addEventListener("click", () => {
-            if (music.paused) {
-                music.play();
-                musicIcon.className = "fas fa-music";
-                musicToggle.classList.add("music-rotate");
-            } else {
-                music.pause();
-                musicIcon.className = "fas fa-pause";
-                musicToggle.classList.remove("music-rotate");
-            }
-        });
+    if (music.paused) {
+        music.play();
+        musicIcon.className = "fas fa-music";
+        musicToggle.classList.add("music-rotate");
+    } else {
+        music.pause();
+        musicIcon.className = "fas fa-pause";
+        musicToggle.classList.remove("music-rotate");
+    }
+});
 
         // Clipboard Copy
         function copyToClipboard(id) {
@@ -488,27 +598,27 @@
 
         // Form Submit Listeners
         document.getElementById('commentForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('commentName').value;
-            const relation = document.getElementById('commentRelation').value;
-            const text = document.getElementById('commentText').value;
+    e.preventDefault();
+    const name = document.getElementById('commentName').value;
+    const relation = document.getElementById('commentRelation').value;
+    const text = document.getElementById('commentText').value;
 
-            const comments = getDB('wedding_comments', defaultComments);
-            comments.push({name, relation, text});
+    const comments = getDB('wedding_comments', defaultComments);
+    comments.push({name, relation, text});
             saveDB('wedding_comments', comments);
-            
+
             renderComments();
             document.getElementById('commentForm').reset();
         });
 
         document.getElementById('rsvpForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('rsvpName').value;
-            const count = document.getElementById('rsvpCount').value;
-            const status = document.querySelector('input[name="rsvpStatus"]:checked').value;
+    e.preventDefault();
+    const name = document.getElementById('rsvpName').value;
+    const count = document.getElementById('rsvpCount').value;
+    const status = document.querySelector('input[name="rsvpStatus"]:checked').value;
 
-            const rsvpList = getDB('wedding_rsvp', defaultRSVP);
-            rsvpList.push({name, count, status, timestamp: new Date().toISOString()});
+    const rsvpList = getDB('wedding_rsvp', defaultRSVP);
+    rsvpList.push({name, count, status, timestamp: new Date().toISOString()});
             saveDB('wedding_rsvp', rsvpList);
 
             alert(`Terima kasih ${name}, data reservasi Anda (${status}) telah berhasil kami simpan.`);
@@ -517,13 +627,13 @@
 
         // Initial Engine Load
         window.addEventListener('DOMContentLoaded', () => {
-            if(!localStorage.getItem('wedding_wishlist')) saveDB('wedding_wishlist', defaultWishlist);
-            if(!localStorage.getItem('wedding_comments')) saveDB('wedding_comments', defaultComments);
-            if(!localStorage.getItem('wedding_rsvp')) saveDB('wedding_rsvp', defaultRSVP);
-            
-            renderWishlist();
-            renderComments();
-        });
+    if(!localStorage.getItem('wedding_wishlist')) saveDB('wedding_wishlist', defaultWishlist);
+    if(!localStorage.getItem('wedding_comments')) saveDB('wedding_comments', defaultComments);
+    if(!localStorage.getItem('wedding_rsvp')) saveDB('wedding_rsvp', defaultRSVP);
+
+    renderWishlist();
+    renderComments();
+});
     </script>
 </body>
 </html>
