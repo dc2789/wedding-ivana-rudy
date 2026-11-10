@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Eternal Love</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root {
+            --dark-champagne: #C2B280;
+            --deep-champagne: #1A1610;
+            --soft-champagne: #E6DCC4;
+            --gold-accent: #D4AF37;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--deep-champagne);
+            color: var(--soft-champagne);
+            overflow-x: hidden;
+        }
+        .font-premium-serif {
+            font-family: 'Cinzel', serif;
+        }
+        .font-premium-accent {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+        /* Shadowing Transition Effect Between Sections */
+        section {
+            position: relative;
+            box-shadow: inset 0 30px 50px -20px rgba(0,0,0,0.9), inset 0 -30px 50px -20px rgba(0,0,0,0.9);
+            border-bottom: 1px solid rgba(194, 178, 128, 0.15);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--deep-champagne);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--dark-champagne);
+            border-radius: 4px;
+        }
+        /* Audio Player Control Animation */
+        .music-rotate {
+            animation: spin 4s linear infinite;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+        .bg-overlay {
+            background: linear-gradient(to bottom, rgba(26, 22, 16, 0.4), rgba(26, 22, 16, 0.85));
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Floating Audio & Navigation Controls -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        <button id="musicToggle" class="w-12 h-12 bg-[#C2B280] text-[#1A1610] rounded-full shadow-2xl flex items-center justify-center text-lg focus:outline-none transition-transform active:scale-95 music-rotate">
+            <i id="musicIcon" class="fas fa-music"></i>
+        </button>
+    </div>
+    
+    <!-- Background Audio (Free Wedding Instrumental Theme) -->
+    <audio id="weddingMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- SECTION 1: Landing Page / Hero Cover -->
+    <section class="min-h-screen relative flex items-center justify-center bg-cover bg-center overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop');">
+        <div class="absolute inset-0 bg-overlay"></div>
+        <div class="relative z-10 text-center px-4 max-w-3xl" data-aos="fade-up" data-aos-duration="1500">
+            <p class="font-premium-serif uppercase tracking-widest text-[#C2B280] text-sm md:text-base mb-4">The Wedding Invitation</p>
+            <h1 class="font-premium-serif text-4xl md:text-7xl font-bold text-[#E6DCC4] mb-4 tracking-wide">Arthur & Eleanor</h1>
+            <p class="font-premium-accent text-2xl md:text-3xl text-[#C2B280] mb-8">We are getting married</p>
+            
+            <!-- Dual Unified Countdown Widget -->
+            <div class="grid grid-cols-2 md:grid-cols-2 gap-4 mb-8 max-w-xl mx-auto">
+                <div class="bg-[#1A1610]/80 p-3 rounded-lg border border-[#C2B280]/30 shadow-xl">
+                    <p class="font-premium-serif text-xs text-[#C2B280] uppercase tracking-wider mb-2">Pemberkatan</p>
+                    <div id="countdown-pemberkatan" class="font-mono text-sm md:text-base font-bold text-white">00d 00h 00m 00s</div>
+                </div>
+                <div class="bg-[#1A1610]/80 p-3 rounded-lg border border-[#C2B280]/30 shadow-xl">
+                    <p class="font-premium-serif text-xs text-[#C2B280] uppercase tracking-wider mb-2">Reseksi</p>
+                    <div id="countdown-resepsi" class="font-mono text-sm md:text-base font-bold text-white">00d 00h 00m 00s</div>
+                </div>
+            </div>
+
+            <button onclick="startInvitation()" class="px-8 py-3 bg-[#C2B280] text-[#1A1610] font-premium-serif uppercase tracking-wider font-semibold rounded-md shadow-lg hover:bg-[#E6DCC4] transition-all transform hover:-translate-y-1">
+                Buka Undangan
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION 2: Groom & Bride Profile -->
+    <section id="main-content" class="py-24 bg-[#1A1610] px-4">
+        <div class="max-w-5xl mx-auto text-center">
+            <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="fade-up">Mempelai Kudus</span>
+            <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4] mb-12" data-aos="fade-up" data-aos-delay="200">Menghitung Kebahagiaan</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <!-- Groom -->
+                <div class="flex flex-col items-center" data-aos="fade-right" data-aos-duration="1200">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-[#C2B280] shadow-2xl mb-6 transform hover:scale-105 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=500&auto=format&fit=crop" alt="Groom" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-premium-serif text-2xl font-bold text-[#E6DCC4]">Arthur Wijaya, S.T.</h3>
+                    <p class="text-sm text-[#C2B280] mt-2 tracking-wide">Putra pertama dari Bapak Wijaya & Ibu Ratna</p>
+                    <div class="flex gap-3 mt-4 text-[#C2B280]/70">
+                        <a href="#" class="hover:text-[#C2B280]"><i class="fab fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Bride -->
+                <div class="flex flex-col items-center" data-aos="fade-left" data-aos-duration="1200">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-[#C2B280] shadow-2xl mb-6 transform hover:scale-105 transition-transform duration-500">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=500&auto=format&fit=crop" alt="Bride" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-premium-serif text-2xl font-bold text-[#E6DCC4]">Eleanor Christie, S.E.</h3>
+                    <p class="text-sm text-[#C2B280] mt-2 tracking-wide">Putri bungsu dari Bapak Christie & Ibu Maria</p>
+                    <div class="flex gap-3 mt-4 text-[#C2B280]/70">
+                        <a href="#" class="hover:text-[#C2B280]"><i class="fab fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Event Details & Location Maps -->
+    <section class="py-24 bg-[#231E16] px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="zoom-in">Waktu & Tempat</span>
+                <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4]" data-aos="zoom-in" data-aos-delay="200">Detail Rangkaian Acara</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Pemberkatan Card -->
+                <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl flex flex-col justify-between" data-aos="fade-up-right" data-aos-duration="1200">
+                    <div>
+                        <div class="text-[#C2B280] text-3xl mb-4"><i class="fas fa-church"></i></div>
+                        <h3 class="font-premium-serif text-2xl font-semibold text-[#E6DCC4] mb-4">Pemberkatan Pernikahan</h3>
+                        <p class="text-sm text-[#C2B280]/90 mb-2"><i class="far fa-calendar-alt mr-2 text-[#C2B280]"></i> Sabtu, 28 November 2026</p>
+                        <p class="text-sm text-[#C2B280]/90 mb-4"><i class="far fa-clock mr-2 text-[#C2B280]"></i> 09:00 WITA - Selesai</p>
+                        <p class="text-sm font-semibold text-[#E6DCC4] mb-2">Gereja Katedral Manado</p>
+                        <p class="text-xs text-[#C2B280]/70 mb-6">Jl. Sam Ratulangi No.23, Wenang, Kota Manado, Sulawesi Utara</p>
+                    </div>
+                    <!-- Embed Google Maps Pemberkatan -->
+                    <div class="w-full h-64 rounded-lg overflow-hidden border border-[#C2B280]/30 shadow-inner">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8427976722247!2d124.84074211110757!3d1.4485744613587213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1m3!1zMcKwMjYnNTQuOSJOIDEyNMKwNTAnMzYuMiJF!5e0!3m2!1sid!2sid!4v1710000000000!5m2!1sid!2sid" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!-- Resepsi Card -->
+                <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl flex flex-col justify-between" data-aos="fade-up-left" data-aos-duration="1200">
+                    <div>
+                        <div class="text-[#C2B280] text-3xl mb-4"><i class="fas fa-glass-cheers"></i></div>
+                        <h3 class="font-premium-serif text-2xl font-semibold text-[#E6DCC4] mb-4">Resepsi Pernikahan</h3>
+                        <p class="text-sm text-[#C2B280]/90 mb-2"><i class="far fa-calendar-alt mr-2 text-[#C2B280]"></i> Sabtu, 28 November 2026</p>
+                        <p class="text-sm text-[#C2B280]/90 mb-4"><i class="far fa-clock mr-2 text-[#C2B280]"></i> 18:30 WITA - Selesai</p>
+                        <p class="text-sm font-semibold text-[#E6DCC4] mb-2">Grand Ballroom The Grand Palace</p>
+                        <p class="text-xs text-[#C2B280]/70 mb-6">Jl. Wolter Monginsidi, Malalayang, Kota Manado, Sulawesi Utara</p>
+                    </div>
+                    <!-- Embed Google Maps Resepsi -->
+                    <div class="w-full h-64 rounded-lg overflow-hidden border border-[#C2B280]/30 shadow-inner">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.871034033306!2d124.819875!3d1.4328909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1m3!1zMcKwMjUnNTguNCJOIDEyNMKwNDknMTEuNiJF!5e0!3m2!1sid!2sid!4v1710000000001!5m2!1sid!2sid" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Pre Wedding Photo Gallery -->
+    <section class="py-24 bg-[#1A1610] px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="fade-down">Galeri Indah</span>
+                <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4]" data-aos="fade-down" data-aos-delay="200">Momen Pre-Wedding</h2>
+            </div>
+
+            <!-- Responsive Grid Gallery -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 1">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1519225495810-7512c696505a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 2">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 3">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 4">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 5">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-xl border border-[#C2B280]/20 aspect-square group" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Prewedding 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Wedding Gift & Wishlist -->
+    <section class="py-24 bg-[#231E16] px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="font-premium-accent text-3xl text-[#C2B280] block mb-2" data-aos="fade-up">Tanda Kasih</span>
+                <h2 class="font-premium-serif text-3xl md:text-4xl font-bold uppercase tracking-wider text-[#E6DCC4]" data-aos="fade-up" data-aos-delay="100">Kado Digital & Wish List</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Digital Gift / Bank Account -->
+                <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl" data-aos="flip-left" data-aos-duration="1200">
+                    <h3 class="font-premium-serif text-xl font-semibold text-[#E6DCC4] mb-6 text-center border-b border-[#C2B280]/20 pb-3">Transfer Bank</h3>
+                    
+                    <div class="bg-[#231E16] p-4 rounded-lg border border-[#C2B280]/10 mb-4 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs uppercase text-[#C2B280] tracking-wider font-semibold">Bank Central Asia (BCA)</p>
+                            <p id="norek-bca" class="font-mono text-lg font-bold text-white tracking-widest my-1">8290456123</p>
+                            <p class="text-xs text-[#C2B280]/70">a.n. Arthur Wijaya</p>
+                        </div>
+                        <button onclick="copyToClipboard('norek-bca')" class="px-3 py-2 bg-[#C2B280]/20 hover:bg-[#C2B280] text-[#C2B280] hover:text-[#1A1610] text-xs font-semibold rounded transition-colors duration-300">
+                            <i class="far fa-copy mr-1"></i> Copy
+                        </button>
+                    </div>
+
+                    <div class="bg-[#231E16] p-4 rounded-lg border border-[#C2B280]/10 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs uppercase text-[#C2B280] tracking-wider font-semibold">Bank Mandiri</p>
+                            <p id="norek-mandiri" class="font-mono text-lg font-bold text-white tracking-widest my-1">157000987654</p>
+                            <p class="text-xs text-[#C2B280]/70">a.n. Eleanor Christie</p>
+                        </div>
+                        <button onclick="copyToClipboard('norek-mandiri')" class="px-3 py-2 bg-[#C2B280]/20 hover:bg-[#C2B280] text-[#C2B280] hover:text-[#1A1610] text-xs font-semibold rounded transition-colors duration-300">
+                            <i class="far fa-copy mr-1"></i> Copy
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Dynamic Wish List -->
+                <div class="bg-[#1A1610] p-8 rounded-xl border border-[#C2B280]/20 shadow-2xl" data-aos="flip-right" data-aos-duration="1200">
+                    <h3 class="font-premium-serif text-xl font-semibold text-[#E6DCC4] mb-6 text-center border-b border-[#C2B280]/20 pb-3">Wedding Wish List</h3>
+                    <p class="text-xs text-[#C2B280]/70 text-center mb-4">Membantu mewujudkan rumah tangga impian kami</p>
+                    
+                    <div id="wishlist-container" class="space-y-3 max-h-64 overflow-y-auto pr-1">
+                        <!-- Dynamic content from internal JSON -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: Reservation Book & Wishes / Comments (JSON Database) -->
+    <section class="py-24 bg-[#1A1610] px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- RSVP / Reservation Book Form -->
+                <div data-aos="fade-right" data-aos-duration="1200">
+                    <span class="font-premium-accent text-2xl text-[#C2B280] block mb-2">Konfirmasi Kehadiran</span>
+                    <h2 class="font-premium-serif text-2xl font-bold uppercase tracking-wider text-[#E6DCC4] mb-6">Reservation Book</h2>
+                    
+                    <form id="rsvpForm" class="space-y-4">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-[#C2B280] mb-2 font-medium">Nama Lengkap</label>
+                            <input type="text" id="rsvpName" required class="w-full bg-[#231E16] border border-[#C2B280]/30 rounded p-3 text-sm text-white focus:outline-none focus:border-[#C2B280] transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-[#C2B280] mb-2 font-medium">Jumlah Tamu</label>
+                            <select id="rsvpCount" class="w-full bg-[#231E16] border border-[#C2B280]/30 rounded p-3 text-sm text-[#C2B280] focus:outline-none focus:border-[#C2B280] transition-colors">
+                                <option value="1">1 Orang</option>
+                                <option value="2">2 Orang</option>
+                                <option value="3">3 Orang</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider text-[#C2B280] mb-2 font-medium">Konfirmasi</label>
+                            <div class="flex gap-4">
+                                <label class="flex items-center text-sm text-[#E6DCC4]">
+                                    <input type="radio" name="rsvpStatus" value="Hadir" checked class="mr-2 accent-[#C2B280]"> Hadir
+                                </label>
+                                <label class="flex items-center text-sm text-[#E6DCC4]">
+                                    <input type="radio" name="rsvpStatus" value="Tidak Hadir" class="mr-2 accent-[#C2B280]"> Tidak Hadir
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-[#C2B280] text-[#1A1610] font-premium-serif uppercase tracking-widest font-semibold text-sm rounded shadow hover:bg-[#E6DCC4] transition-all transform active:scale-95">
+                            Kirim Reservasi
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Ucapan & Doa Restu / Guest Book Comments -->
+                <div data-aos="fade-left" data-aos-duration="1200">
+                    <span class="font-premium-accent text-2xl text-[#C2B280] block mb-2">Doa Restu Tamu</span>
+                    <h2 class="font-premium-serif text-2xl font-bold uppercase tracking-wider text-[#E6DCC4] mb-6">Guest Book Comments</h2>
+                    
+                    <form id="commentForm" class="space-y-4 mb-6">
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="text" id="commentName" placeholder="Nama Anda" required class="bg-[#231E16] border border-[#C2B280]/30 rounded p-3 text-xs text-white focus:outline-none focus:border-[#C2B280]">
+                            <select id="commentRelation" class="bg-[#231E16] border border-[#C2B280]/30 rounded p-3 text-xs text-[#C2B280] focus:outline-none focus:border-[#C2B280]">
+                                <option value="Keluarga">Keluarga</option>
+                                <option value="Teman">Teman</option>
+                                <option value="Rekan Kerja">Rekan Kerja</option>
+                            </select>
+                        </div>
+                        <textarea id="commentText" placeholder="Tulis ucapan selamat & doa restu Anda di sini..." rows="3" required class="w-full bg-[#231E16] border border-[#C2B280]/30 rounded p-3 text-xs text-white focus:outline-none focus:border-[#C2B280]"></textarea>
+                        <button type="submit" class="w-full py-2 bg-[#C2B280]/20 border border-[#C2B280] text-[#C2B280] font-premium-serif uppercase tracking-wider text-xs font-semibold rounded hover:bg-[#C2B280] hover:text-[#1A1610] transition-all">
+                            Kirim Ucapan
+                        </button>
+                    </form>
+
+                    <!-- Scrollable Live JSON Comment Stream -->
+                    <div id="comments-container" class="space-y-3 max-h-60 overflow-y-auto pr-1">
+                        <!-- Dynamic content filled via local json engine -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-[#14110C] text-center border-t border-[#C2B280]/10">
+        <p class="font-premium-serif text-lg font-semibold text-[#C2B280] tracking-widest">Arthur & Eleanor</p>
+        <p class="text-xs text-[#C2B280]/40 mt-2">© 2026 Premium Digital Wedding Invitation. All Rights Reserved.</p>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPT & LOCAL JSON ENGINE -->
+    <script>
+        // Init AOS Animations
+        AOS.init({
+            once: false,
+            mirror: true
+        });
+
+        // Target Event Dates (2026 Simulation)
+        const datePemberkatan = new Date("Nov 28, 2026 09:00:00").getTime();
+        const dateResepsi = new Date("Nov 28, 2026 18:30:00").getTime();
+
+        function updateCountdowns() {
+            const now = new Date().getTime();
+
+            // Pemberkatan
+            const diffP = datePemberkatan - now;
+            if (diffP > 0) {
+                const d = Math.floor(diffP / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diffP % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diffP % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diffP % (1000 * 60)) / 1000);
+                document.getElementById("countdown-pemberkatan").innerText = `${d}d ${h}h ${m}m ${s}s`;
+            } else {
+                document.getElementById("countdown-pemberkatan").innerText = "Acara Dimulai";
+            }
+
+            // Resepsi
+            const diffR = dateResepsi - now;
+            if (diffR > 0) {
+                const d = Math.floor(diffR / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diffR % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diffR % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diffR % (1000 * 60)) / 1000);
+                document.getElementById("countdown-resepsi").innerText = `${d}d ${h}h ${m}m ${s}s`;
+            } else {
+                document.getElementById("countdown-resepsi").innerText = "Acara Dimulai";
+            }
+        }
+        setInterval(updateCountdowns, 1000);
+        updateCountdowns();
+
+        // Audio System Controls
+        const music = document.getElementById("weddingMusic");
+        const musicToggle = document.getElementById("musicToggle");
+        const musicIcon = document.getElementById("musicIcon");
+
+        function startInvitation() {
+            document.getElementById("main-content").scrollIntoView({ behavior: 'smooth' });
+            music.play().then(() => {
+                musicToggle.classList.add("music-rotate");
+            }).catch(e => console.log("Autoplay blocked until user interaction."));
+        }
+
+        musicToggle.addEventListener("click", () => {
+            if (music.paused) {
+                music.play();
+                musicIcon.className = "fas fa-music";
+                musicToggle.classList.add("music-rotate");
+            } else {
+                music.pause();
+                musicIcon.className = "fas fa-pause";
+                musicToggle.classList.remove("music-rotate");
+            }
+        });
+
+        // Clipboard Copy
+        function copyToClipboard(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Nomor rekening berhasil disalin!");
+            });
+        }
+
+        // --- LOCAL JSON DATABASE ENGINE ---
+        // Mock Initial JSON Data Seed
+        const defaultWishlist = [
+            {"id": 1, "item": "Set Alat Masak Granite Premium", "claimed": true, "by": "Keluarga Eleanor"},
+            {"id": 2, "item": "Smart TV 50 Inch 4K Ultra HD", "claimed": false, "by": ""},
+            {"id": 3, "item": "Robot Vacuum Cleaner", "claimed": false, "by": ""},
+            {"id": 4, "item": "Coffee Maker Machine Espresso", "claimed": true, "by": "Rekan Kerja Arthur"}
+        ];
+
+        const defaultComments = [
+            {"name": "Bimo & Shinta", "relation": "Teman", "text": "Selamat menempuh hidup baru Arthur dan Eleanor! Semoga cinta kalian abadi selamanya sampai kakek nenek."},
+            {"name": "Tante Miranda", "relation": "Keluarga", "text": "Selamat ya kado terindah tahun ini, lancar sampai hari H pemberkatan Tuhan Yesus memberkati."}
+        ];
+
+        const defaultRSVP = [];
+
+        // Database Init Helpers
+        function getDB(key, defaultData) {
+            const data = localStorage.getItem(key);
+            return data ? JSON.parse(data) : defaultData;
+        }
+
+        function saveDB(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        // Render Functions
+        function renderWishlist() {
+            const items = getDB('wedding_wishlist', defaultWishlist);
+            const container = document.getElementById('wishlist-container');
+            container.innerHTML = '';
+            items.forEach(i => {
+                container.innerHTML += `
+                    <div class="bg-[#231E16] p-3 rounded border border-[#C2B280]/10 flex justify-between items-center text-xs">
+                        <div>
+                            <p class="font-medium text-[#E6DCC4]">${i.item}</p>
+                            ${i.claimed ? `<p class="text-[10px] text-[#C2B280]/60 italic">Dihadiahkan oleh: ${i.by}</p>` : ''}
+                        </div>
+                        <button onclick="claimWish(${i.id})" ${i.claimed ? 'disabled' : ''} class="px-2 py-1 rounded text-[10px] uppercase font-bold tracking-wider ${i.claimed ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed' : 'bg-[#C2B280] text-[#1A1610] hover:bg-[#E6DCC4]'}" >
+                            ${i.claimed ? 'Claimed' : 'Klaim'}
+                        </button>
+                    </div>
+                `;
+            });
+        }
+
+        function renderComments() {
+            const comments = getDB('wedding_comments', defaultComments);
+            const container = document.getElementById('comments-container');
+            container.innerHTML = '';
+            comments.slice().reverse().forEach(c => {
+                container.innerHTML += `
+                    <div class="bg-[#231E16] p-3 rounded border border-[#C2B280]/10 text-xs">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="font-bold text-[#E6DCC4]">${c.name}</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-[#C2B280]/10 text-[#C2B280] font-medium">${c.relation}</span>
+                        </div>
+                        <p class="text-[#E6DCC4]/80 leading-relaxed">${c.text}</p>
+                    </div>
+                `;
+            });
+        }
+
+        // Actions
+        function claimWish(id) {
+            const name = prompt("Masukkan nama Anda untuk mengklaim kado ini:");
+            if (!name) return;
+            let items = getDB('wedding_wishlist', defaultWishlist);
+            items = items.map(i => i.id === id ? {...i, claimed: true, by: name} : i);
+            saveDB('wedding_wishlist', items);
+            renderWishlist();
+        }
+
+        // Form Submit Listeners
+        document.getElementById('commentForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('commentName').value;
+            const relation = document.getElementById('commentRelation').value;
+            const text = document.getElementById('commentText').value;
+
+            const comments = getDB('wedding_comments', defaultComments);
+            comments.push({name, relation, text});
+            saveDB('wedding_comments', comments);
+            
+            renderComments();
+            document.getElementById('commentForm').reset();
+        });
+
+        document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('rsvpName').value;
+            const count = document.getElementById('rsvpCount').value;
+            const status = document.querySelector('input[name="rsvpStatus"]:checked').value;
+
+            const rsvpList = getDB('wedding_rsvp', defaultRSVP);
+            rsvpList.push({name, count, status, timestamp: new Date().toISOString()});
+            saveDB('wedding_rsvp', rsvpList);
+
+            alert(`Terima kasih ${name}, data reservasi Anda (${status}) telah berhasil kami simpan.`);
+            document.getElementById('rsvpForm').reset();
+        });
+
+        // Initial Engine Load
+        window.addEventListener('DOMContentLoaded', () => {
+            if(!localStorage.getItem('wedding_wishlist')) saveDB('wedding_wishlist', defaultWishlist);
+            if(!localStorage.getItem('wedding_comments')) saveDB('wedding_comments', defaultComments);
+            if(!localStorage.getItem('wedding_rsvp')) saveDB('wedding_rsvp', defaultRSVP);
+            
+            renderWishlist();
+            renderComments();
+        });
+    </script>
+</body>
+</html>
