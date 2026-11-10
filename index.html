@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Ivana & Rudy</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #c5a880; /* Elegant Soft Gold */
+            --bg-dark: #121212; /* Deep Dark */
+            --bg-card: #1a1a1a; /* Elevated Dark Card */
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        .font-serif {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+        }
+
+        /* Hero / Cover Section */
+        .hero {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1920') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            z-index: 1050;
+            transition: transform 1s ease-in-out;
+        }
+
+        .hero.unlocked {
+            transform: translateY(-100vh);
+        }
+
+        /* Main Content wrapper */
+        .main-content {
+            display: none;
+            margin-top: 0;
+        }
+
+        /* Sections Styling */
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .quote-container {
+            max-width: 700px;
+            margin: 0 auto;
+            border-left: 3px solid var(--primary);
+            padding-left: 20px;
+            font-style: italic;
+        }
+
+        /* Bride & Groom */
+        .couple-img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            margin-bottom: 25px;
+            padding: 5px;
+            background-color: var(--bg-card);
+        }
+
+        /* Countdown Card */
+        .countdown-box {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #2c2c2c;
+            min-width: 90px;
+            margin: 5px;
+        }
+
+        .countdown-box span {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+            color: var(--primary);
+        }
+
+        /* Floating Audio Button */
+        .audio-icon-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #000;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            border: none;
+            box-shadow: 0 4px 15px rgba(197, 168, 128, 0.3);
+            font-size: 1.2rem;
+        }
+
+        /* Card Custom overrides */
+        .custom-card {
+            background: var(--bg-card);
+            border: 1px solid #2c2c2c;
+            border-radius: 12px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-card:hover {
+            border-color: var(--primary);
+        }
+
+        /* Gallery */
+        .gallery-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #2c2c2c;
+            transition: all 0.4s ease;
+            filter: grayscale(30%);
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.02);
+            filter: grayscale(0%);
+            border-color: var(--primary);
+        }
+
+        /* Form Controls */
+        .form-control, .form-select {
+            background-color: #1f1f1f;
+            border: 1px solid #333;
+            color: var(--text-light);
+        }
+
+        .form-control:focus, .form-select:focus {
+            background-color: #252525;
+            border-color: var(--primary);
+            color: white;
+            box-shadow: none;
+        }
+
+        .btn-gold {
+            background-color: var(--primary);
+            color: #121212;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: #b5976f;
+            color: #121212;
+            box-shadow: 0 0 15px rgba(197, 168, 128, 0.4);
+        }
+
+        .btn-outline-gold {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .btn-outline-gold:hover {
+            background-color: var(--primary);
+            color: #121212;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Audio Control -->
+    <button id="audio-btn" class="audio-icon-button" style="display: none;">
+        <i class="fa-solid fa-disc fa-spin"></i>
+    </button>
+    <!-- Ganti URL src ini dengan file audio/mp3 pilihan Anda -->
+    <audio id="bgm" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
+
+    <!-- COVER SCREEN SECTION -->
+    <div id="hero-cover" class="hero">
+        <div>
+            <h5 class="text-uppercase tracking-widest mb-3 small text-secondary" style="letter-spacing: 4px;">The Wedding of</h5>
+            <h1 class="font-serif display-3 mb-4" style="color: var(--primary);">Rudy &amp; Ivana</h1>
+            <p class="mb-4 text-muted">Kepada Bapak/Ibu/Saudara/i:</p>
+            <h4 id="guest-name" class="fw-bold mb-5 text-white">- Nama Tamu -</h4>
+            <button class="btn btn-gold btn-lg px-4 shadow" onclick="openInvitation()">
+                <i class="fa-solid fa-envelope-open me-2"></i> Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN WEBSITE CONTENT -->
+    <div id="main-content" class="main-content">
+        
+        <!-- HOME / HERO BANNER -->
+        <header class="text-center py-5" style="background-color: var(--bg-card); border-bottom: 1px solid #222;">
+            <h1 class="font-serif display-4 mt-4" style="color: var(--primary);">Rudy &amp; Ivana</h1>
+            <p class="text-muted text-uppercase tracking-wide small" style="letter-spacing: 3px;">Menatap Masa Depan Bersama dalam Ikatan Suci</p>
+        </header>
+
+        <!-- KISAH & MEMPELAI SECTION -->
+        <section class="container">
+            <div class="text-center mb-5">
+                <h2 class="font-serif section-title">Mempelai</h2>
+                <div class="quote-container text-start my-4">
+                    "Tuhan tidak pernah terlambat menuliskan lembaran baru. Atas restu anak-anak kami, serta keteguhan hati untuk saling melengkapi di usia matang ini, kami melangkah bersama menuju babak baru yang penuh berkah dan kedewasaan."
+                </div>
+            </div>
+            
+            <div class="row align-items-center justify-content-center text-center mt-5">
+                <!-- Mempelai Pria -->
+                <div class="col-md-5 mb-5">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400" alt="Rudy" class="couple-img">
+                    <h3 class="font-serif h4" style="color: var(--primary);">Rudy</h3>
+                    <p class="text-muted mt-2">Sosok ayah dan pria penyayang yang siap menjadi nahkoda baru serta pelindung keluarga.</p>
+                </div>
+                
+                <div class="col-md-2 mb-5">
+                    <h1 class="font-serif display-5 text-secondary">&amp;</h1>
+                </div>
+
+                <!-- Mempelai Wanita -->
+                <div class="col-md-5 mb-5">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400" alt="Ivana" class="couple-img">
+                    <h3 class="font-serif h4" style="color: var(--primary);">Ivana</h3>
+                    <p class="text-muted mt-2">Sosok ibu dan wanita anggun yang siap membangun istana cinta yang damai dan hangat.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACARA SECTION & COUNTDOWN -->
+        <section style="background-color: var(--bg-card);">
+            <div class="container text-center">
+                <h2 class="font-serif section-title">Hari Bahagia</h2>
+                <p class="mb-5 text-muted">Momen sakral kami akan diselenggarakan pada:</p>
+
+                <!-- Countdown Timer -->
+                <div class="d-flex justify-content-center mb-5">
+                    <div class="countdown-box">
+                        <span id="days">00</span>Hari
+                    </div>
+                    <div class="countdown-box">
+                        <span id="hours">00</span>Jam
+                    </div>
+                    <div class="countdown-box">
+                        <span id="minutes">00</span>Menit
+                    </div>
+                    <div class="countdown-box">
+                        <span id="seconds">00</span>Detik
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-5 my-3">
+                        <div class="custom-card h-100">
+                            <i class="fa-solid fa-square-poll-vertical fa-2x mb-3" style="color: var(--primary);"></i>
+                            <h4 class="font-serif h5 mb-3" style="color: var(--primary);">Pemberkatan / Akad</h4>
+                            <p class="mb-2 text-light"><i class="fa-regular fa-calendar-check me-2 text-muted"></i>Sabtu, 12 Desember 2026</p>
+                            <p class="mb-3 text-light"><i class="fa-regular fa-clock me-2 text-muted"></i>10.00 - 11.30 WITA</p>
+                            <p class="fw-semibold mb-1">Gedung Kencana Ballroom</p>
+                            <p class="small text-muted">Jl. Elang Emas No. 8, Kota Anda</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 my-3">
+                        <div class="custom-card h-100">
+                            <i class="fa-solid fa-wine-glass fa-2x mb-3" style="color: var(--primary);"></i>
+                            <h4 class="font-serif h5 mb-3" style="color: var(--primary);">Resepsi Pernikahan</h4>
+                            <p class="mb-2 text-light"><i class="fa-regular fa-calendar-check me-2 text-muted"></i>Sabtu, 12 Desember 2026</p>
+                            <p class="mb-3 text-light"><i class="fa-regular fa-clock me-2 text-muted"></i>12.00 - Selesai</p>
+                            <p class="fw-semibold mb-1">Grand Ballroom Emerald</p>
+                            <p class="small text-muted">Jl. Elang Emas No. 8, Kota Anda</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <a href="https://maps.google.com" target="_blank" class="btn btn-outline-gold px-4 py-2">
+                        <i class="fa-solid fa-map-location-dot me-2"></i> Lihat Peta Lokasi
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="container text-center">
+            <h2 class="font-serif section-title">Momen Kebersamaan</h2>
+            <p class="text-muted mb-5">Langkah awal kehangatan keluarga baru kami.</p>
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
+                    <img src="https://images.unsplash.com/photo-1519225495810-7512c696505a?q=80&w=600" class="gallery-img" alt="Gallery 1">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=600" class="gallery-img" alt="Gallery 2">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600" class="gallery-img" alt="Gallery 3">
+                </div>
+                <div class="col-6 col-md-3">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=600" class="gallery-img" alt="Gallery 4">
+                </div>
+            </div>
+        </section>
+
+        <section style="background-color: var(--bg-card);">
+            <div class="container" style="max-width: 700px;">
+                <div class="text-center">
+                    <h2 class="font-serif section-title">Konfirmasi Kehadiran</h2>
+                    <p class="text-muted mb-5">Kehadiran serta doa restu Anda adalah kehormatan besar bagi masa depan keluarga kami.</p>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-11 shadow p-4 rounded" style="background-color: #161616; border: 1px solid #252525;">
+                        <form id="rsvp-form" onsubmit="handleRSVP(event)">
+                            <div class="mb-3">
+                                <label for="form-name" class="form-label fw-semibold">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="form-name" required placeholder="Nama Anda">
+                            </div>
+                            <div class="mb-3">
+                                <label for="attendance" class="form-label fw-semibold">Konfirmasi Kehadiran</label>
+                                <select class="form-select" id="attendance" required>
+                                    <option value="" disabled selected>-- Pilih Status --</option>
+                                    <option value="Hadir">Saya Akan Hadir</option>
+                                    <option value="Tidak Hadir">Maaf, Tidak Dapat Hadir</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label fw-semibold">Ucapan Hangat &amp; Doa</label>
+                                <textarea class="form-control" id="message" rows="3" placeholder="Tuliskan doa restu Anda untuk kami..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-gold w-100 py-2 mt-2">Kirim Konfirmasi</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-4" style="background-color: #0b0b0b; border-top: 1px solid #1a1a1a;">
+            <p class="font-serif h5 mb-1" style="color: var(--primary);">Rudy &amp; Ivana</p>
+            <p class="small text-muted mb-0">&copy; 2026 E-Wedding Invitation. Mature &amp; Elegant Design.</p>
+        </footer>
+    </div>
+
+    <script>
+        // 1. Ambil Nama Tamu dari parameter URL secara otomatis (?n=NamaTamu)
+        const urlParams = new URLSearchParams(window.location.search);
+        const guestName = urlParams.get('n') || "Tamu Undangan";
+        document.getElementById('guest-name').innerText = guestName;
+        document.getElementById('form-name').value = guestName !== "Tamu Undangan" ? guestName : "";
+
+        // 2. Fungsi Tombol Buka Undangan
+        function openInvitation() {
+            const cover = document.getElementById('hero-cover');
+            cover.classList.add('unlocked');
+            
+            const mainContent = document.getElementById('main-content');
+            mainContent.style.display = 'block';
+            
+            const audio = document.getElementById('bgm');
+            const audioBtn = document.getElementById('audio-btn');
+            audioBtn.style.display = 'flex';
+            audio.play().catch(error => console.log("Autoplay dicegah oleh browser"));
+
+            setTimeout(() => {
+                cover.style.display = 'none';
+            }, 1000);
+        }
+
+        // 3. Kontrol Musik (Play/Pause)
+        const audio = document.getElementById('bgm');
+        const audioBtn = document.getElementById('audio-btn');
+        let isPlaying = true;
+
+        audioBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                audio.pause();
+                audioBtn.innerHTML = '<i class="fa-solid fa-disc"></i>';
+            } else {
+                audio.play();
+                audioBtn.innerHTML = '<i class="fa-solid fa-disc fa-spin"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // 4. Hitung Mundur Waktu Pernikahan (Countdown)
+        // Atur target tanggal di sini (Format: MMM DD, YYYY HH:MM:SS)
+        const weddingDate = new Date("Dec 12, 2026 10:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 && days >= 0 ? "0" + days : (days < 0 ? "00" : days);
+            document.getElementById("hours").innerText = hours < 10 && hours >= 0 ? "0" + hours : (hours < 0 ? "00" : hours);
+            document.getElementById("minutes").innerText = minutes < 10 && minutes >= 0 ? "0" + minutes : (minutes < 0 ? "00" : minutes);
+            document.getElementById("seconds").innerText = seconds < 10 && seconds >= 0 ? "0" + seconds : (seconds < 0 ? "00" : seconds);
+
+            if (distance < 0) {
+                clearInterval(timer);
+            }
+        }, 1000);
+
+        // 5. Handling Submit Form RSVP
+        function handleRSVP(event) {
+            event.preventDefault();
+            const name = document.getElementById('form-name').value;
+            const status = document.getElementById('attendance').value;
+            const msg = document.getElementById('message').value;
+
+            alert(`Terima kasih ${name}!\nKonfirmasi Anda (${status}) telah kami terima.\nPesan: "${msg}"`);
+            document.getElementById('rsvp-form').reset();
+        }
+    </script>
+</body>
+                                  </html>
